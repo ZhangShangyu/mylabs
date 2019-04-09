@@ -1,0 +1,120 @@
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   EnumDemo.java
+
+package org.zsy.sometest.enumdemo;
+
+
+public abstract class EnumDemo extends Enum
+{
+    static final class SimpleEnum extends Enum
+    {
+
+        public static SimpleEnum[] values()
+        {
+            return (SimpleEnum[])$VALUES.clone();
+        }
+
+        public static SimpleEnum valueOf(String s)
+        {
+            return (SimpleEnum)Enum.valueOf(org/zsy/sometest/enumdemo/EnumDemo$SimpleEnum, s);
+        }
+
+        public static final SimpleEnum MONDAY;
+        public static final SimpleEnum TUESDAY;
+        public static final SimpleEnum WEDNESDAY;
+        public static final SimpleEnum THURSDAY;
+        public static final SimpleEnum FRIDAY;
+        public static final SimpleEnum SATURDAY;
+        public static final SimpleEnum SUNDAY;
+        private static final SimpleEnum $VALUES[];
+
+        static 
+        {
+            MONDAY = new SimpleEnum("MONDAY", 0);
+            TUESDAY = new SimpleEnum("TUESDAY", 1);
+            WEDNESDAY = new SimpleEnum("WEDNESDAY", 2);
+            THURSDAY = new SimpleEnum("THURSDAY", 3);
+            FRIDAY = new SimpleEnum("FRIDAY", 4);
+            SATURDAY = new SimpleEnum("SATURDAY", 5);
+            SUNDAY = new SimpleEnum("SUNDAY", 6);
+            $VALUES = (new SimpleEnum[] {
+                MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+            });
+        }
+
+        private SimpleEnum(String s, int i)
+        {
+            super(s, i);
+        }
+    }
+
+
+    public static EnumDemo[] values()
+    {
+        return (EnumDemo[])$VALUES.clone();
+    }
+
+    public static EnumDemo valueOf(String s)
+    {
+        return (EnumDemo)Enum.valueOf(org/zsy/sometest/enumdemo/EnumDemo, s);
+    }
+
+    private EnumDemo(String s, int i, int j)
+    {
+        super(s, i);
+        value = j;
+    }
+
+    abstract int getAbValue();
+
+    public int getValue()
+    {
+        return value;
+    }
+
+    public static EnumDemo findByValue(int i)
+    {
+        switch(i)
+        {
+        case 1: // '\001'
+            return PLATFORM;
+
+        case 2: // '\002'
+            return SELLER;
+        }
+        return null;
+    }
+
+
+    public static final EnumDemo PLATFORM;
+    public static final EnumDemo SELLER;
+    private final int value;
+    private static final EnumDemo $VALUES[];
+
+    static 
+    {
+        PLATFORM = new EnumDemo("PLATFORM", 0, 1) {
+
+            int getAbValue()
+            {
+                return getValue() + 1;
+            }
+
+        }
+;
+        SELLER = new EnumDemo("SELLER", 1, 2) {
+
+            int getAbValue()
+            {
+                return getValue() + 2;
+            }
+
+        }
+;
+        $VALUES = (new EnumDemo[] {
+            PLATFORM, SELLER
+        });
+    }
+}
