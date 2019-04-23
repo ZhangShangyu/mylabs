@@ -36,4 +36,26 @@ public class TestGeneric {
             fail();
         }
     }
+
+    public void inspect(List<Object> list) {
+        for (Object obj : list) {
+            System.out.println(obj);
+        }
+        list.add(1); //这个操作在当前方法的上下文是合法的。
+    }
+
+
+    public void inspect2(List<?> list) {
+        for (Object obj : list) {
+            System.out.println(obj);
+        }
+    }
+
+    @Test
+    public void testTypeSystem() {
+        List<String> strs = new ArrayList<String>();
+        //inspect(strs); //编译错误  List<String> 是List<Object>的子类
+        inspect2(strs);  // List<String> 是List<?>的子类
+    }
+
 }
